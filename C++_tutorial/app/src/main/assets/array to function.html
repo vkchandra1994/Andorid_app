@@ -1,0 +1,95 @@
+<h1>Passing Array to a Function in C++ Programming</h1>
+ 
+<div class="page-short-description">
+In this, you'll learn to pass an array to a function in C++. You'll learn to pass both one-dimensional and multi-dimensional arrays.</div>
+  
+<img src="file:///android_asset/array_function.jpg" alt="Passing Array to a Function in C++" title="Passing Array to a Function in C++">
+<h2>Example 1: Passing One-dimensional Array to a Function</h2>
+<p><b>C++ Program to display marks of 5 students by passing one-dimensional array to a function.</b></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> display</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> marks</span><span class="pun">[</span><span class="lit">5</span><span class="pun">]);</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> marks</span><span class="pun">[</span><span class="lit">5</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="lit">88</span><span class="pun">,</span><span class="pln"> </span><span class="lit">76</span><span class="pun">,</span><span class="pln"> </span><span class="lit">90</span><span class="pun">,</span><span class="pln"> </span><span class="lit">61</span><span class="pun">,</span><span class="pln"> </span><span class="lit">69</span><span class="pun">};</span><span class="pln">
+    display</span><span class="pun">(</span><span class="pln">marks</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> display</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> m</span><span class="pun">[</span><span class="lit">5</span><span class="pun">])</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Displaying marks: "</span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Student "</span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="str">": "</span><span class="pun">&lt;&lt;</span><span class="pln"> m</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p></p><div id="adhuro-block-inject-1" class="adhuro-block-inject adhuro-block-inject-1"></div><p><b>Output</b></p>
+<pre><samp>Displaying marks: 
+Student 1: 88
+Student 2: 76
+Student 3: 90
+Student 4: 61
+Student 5: 69
+</samp></pre>
+<p>When an array is passed as an argument to a function, only the name of an array is used as argument.</p>
+<pre>display(marks);</pre>
+<p>Also notice the difference while passing array as an argument rather than a variable.</p>
+<pre>void display(int m[5]);</pre>
+<p>The argument&nbsp;<code>marks</code> in the above code represents the memory address of first element of array <code>marks[5]</code>.</p>
+<p>And the formal argument <code>int m[5]</code> in function declaration converts to <code>int* m;</code>. This pointer points to the same address pointed by the array <var>marks</var>.</p>
+<p>That's the reason, although the function is manipulated in the user-defined function with different array name <code>m[5]</code>, the original array <var>marks</var> is manipulated.</p>
+
+</div><div class="clearfix"></div><p>C++ handles passing an array to a function in this way to save memory and time.</p>
+<hr>
+<h2>Passing Multidimensional Array to a Function</h2>
+<p>Multidimensional array can be passed in similar way as one-dimensional array. Consider this example to pass two dimensional array to a function:</p>
+<h3>Example 2: Passing Multidimensional Array to a Function</h3>
+<p><b>C++ Program to display the elements of two dimensional array by passing it to a function.</b></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> display</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">[</span><span class="lit">3</span><span class="pun">][</span><span class="lit">2</span><span class="pun">]);</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> num</span><span class="pun">[</span><span class="lit">3</span><span class="pun">][</span><span class="lit">2</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="pun">{</span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="lit">9</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="lit">7</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">}</span><span class="pln">
+
+    </span><span class="pun">};</span><span class="pln">
+    display</span><span class="pun">(</span><span class="pln">num</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> display</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">[</span><span class="lit">3</span><span class="pun">][</span><span class="lit">2</span><span class="pun">])</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Displaying Values: "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">  i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">j</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            cout </span><span class="pun">&lt;&lt;</span><span class="pln"> n</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" "</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><b>Output</b></p>
+<pre><samp>Displaying Values: 
+3 4 9 5 7 1 </samp></pre>
+<p>In the above program, the multi-dimensional array <var>num</var> is passed to the function <code>display()</code>.</p>
+<p>Inside, <code>display()</code> function, the array <var>n (num)</var> is traversed using a nested for loop.</p>
+<p>The program uses 2 <a>title="C++ for loop">for loops</a> to iterate over the elements inside a 2-dimensional array. If it were a 3-dimensional array, you should use 3 for loops.</p>
+<p>Finally, all elements are printed onto the screen.</p>
+<p><strong>Note:&nbsp;</strong>Multidimensional array with dimension more than 2 can be passed in similar way as two dimensional array.</p>
+</section>
+    </div>
+    </div>
+    </div>
+    </div>
+

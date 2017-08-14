@@ -1,0 +1,330 @@
+<div class="span8">
+<div id="body-content">
+
+<h3>Constructors</h3>
+<p>Constructors are special class functions which performs initialization of every object. The Compiler calls the Constructor whenever an object is created. Constructors iitialize values to object members after storage is allocated to the object.</p>
+<pre class="cpp">class A
+{
+ int x;
+ public:
+ A();  //Constructor
+};
+</pre>
+<p>While defining a contructor you must remeber that the name of constructor will be same as the name of the class, and contructors never have return type.</p>
+
+<p>Constructors can be defined either inside the class definition or outside class definition using class name and scope resolution <code>::</code> operator.</p>
+<pre class="cpp">class A
+{
+ int i;
+ public:
+ A(); //Constructor declared
+};
+
+A::A()   // Constructor definition
+{
+ i=1;
+}</pre>
+<hr>
+
+<h4>Types of Constructors</h4>
+<p>Constructors are of three types :
+</p>
+<ol class="content">
+<li>Default Constructor</li>
+<li>Parametrized Constructor</li>
+<li>Copy COnstructor</li>
+</ol>
+<hr>
+
+<h4>Default Constructor</h4>
+
+<p>
+Default constructor is the constructor which doesn't take any argument. It has no parameter.</p>
+
+<p><b>Syntax :</b></p>
+<pre class="cpp">class_name () 
+{ Constructor Definition }
+</pre>
+
+<p><i>Example :</i></p>
+<pre class="cpp">class Cube
+{
+int side;
+public:
+Cube()
+ {  
+  side=10;
+ }
+};
+
+int main()
+{
+Cube c;
+cout &lt;&lt; c.side;
+}
+</pre>
+<code>Output : 10</code>
+
+<p>In this case, as soon as the object is created the constructor is called which initializes its data members.</p>
+
+<p>A default constructor is so important for initialization of object members, that even if we do not define a constructor explicitly, the compiler will provide a default constructor implicitly.</p>
+
+<pre class="cpp">class Cube
+{
+ int side;
+};
+
+int main()
+{
+ Cube c;
+ cout &lt;&lt; c.side;
+}
+</pre>
+<code>Output : 0</code>
+
+<p>In this case, default constructor provided by the compiler will be called which will initialize the object data members to default value, that will be 0 in this case.</p>
+<hr>
+
+<h4>Parameterized Constructor</h4>
+<p>
+These are the constructors with parameter. Using this Constructor you can provide different values to data members of different objects, by passing the appropriate values as argument.</p>
+
+<p><i>Example :</i></p>
+
+<pre class="cpp">class Cube
+{
+ int side;
+ public:
+ Cube(int x)
+  {  
+   side=x;
+  }
+};
+
+int main()
+{
+ Cube c1(10);
+ Cube c2(20);
+ Cube c3(30);
+ cout &lt;&lt; c1.side;
+ cout &lt;&lt; c2.side;
+ cout &lt;&lt; c3.side;
+}
+</pre>
+<code>OUTPUT : 10 20 30</code>
+
+<p>By using parameterized construcor in above case, we have initialized 3 objects with user defined values.
+    We can have any number of parameters in a constructor.</p>
+<hr>
+<h4>Copy Constructor</h4>
+<p>These are special type of Constructors which takes an object as argument,
+    and is used to copy values of data members of one object into other object.
+</p>
+ <p>
+ <p><i>Example :</i></p>
+
+ <pre class="cpp1">class Point
+{
+
+private:
+    int x, y;
+public:
+    Point(int x1, int y1)
+    { x = x1;
+     y = y1;
+     }
+ /* Reason for passing const reference in copy constructor is,we should use const in C++
+     wherever possible so that objects are not accidentally modified.*/
+
+    Point(const Point &p2)   //copy constructor
+  {
+      x = p2.x;
+      y = p2.y;
+    }
+
+    int getX()
+  {
+  return x;
+  }
+    int getY()
+  {
+  return y;
+   }
+};
+
+int main()
+{
+    Point p1(10, 15);//normal constructor calling
+    Point p2 = p1;    //copy constructor calling
+    cout << "p1.x = " << p1.getX() << ", p1.y = " << p1.getY();
+    cout << "\np2.x = " << p2.getX() << ", p2.y = " << p2.getY();
+  return 0;
+}
+     <code>
+           output: p1.x = 10, p1.y = 15
+           p2.x = 10, p2.y = 15 </code>
+ </pre>
+<hr>
+<a>When the copy constructor is needed?</a>
+    <p><i>Example :</i></p>
+    <pre class="cpp2">class String
+    {
+    private:
+    char *s;
+    int size;
+    public:
+    String(const char *str = NULL); // constructor
+    ~String() { delete [] s;  }// destructor
+
+        /*One reason for passing const reference in copy constructor is,we should use const in C++
+         wherever possible so that objects are not accidentally modified.*/
+
+    String(const String&); // copy constructor
+    void print() { cout << s << endl; } // Function to print string
+    void change(const char *);  // Function to change
+    };
+
+    String::String(const char *str)
+    {
+    size = strlen(str);
+    s = new char[size+1];
+    strcpy(s, str);
+    }
+
+    void String::change(const char *str)
+    {
+    delete [] s;
+    size = strlen(str);
+    s = new char[size+1];
+    strcpy(s, str);
+    }
+
+    String::String(const String& old_str)
+    {
+    size = old_str.size;
+    s = new char[size+1];
+    strcpy(s, old_str.s);
+    }
+
+    int main()
+    {
+    String str1("GeeksQuiz");
+    String str2 = str1;
+
+    str1.print(); // what is printed ?
+    str2.print();
+
+    str2.change("GeeksforGeeks");
+
+    str1.print(); // what is printed now ?
+    str2.print();
+    return 0;
+    }
+        </pre>
+    <code>otput:
+        GeeksQuiz
+        GeeksQuiz
+        GeeksQuiz
+        GeeksforGeeks</code>
+    <hr>
+
+<h3>Constructor Overloading</h3>
+<p>
+Just like other member functions, constructors can also be overloaded. Infact when you have both default and parameterized constructors defined in your class you are having Overloaded Constructors, one with no parameter and other with parameter.</p>
+
+<p>You can have any number of Constructors in a class that differ in parameter list. </p>
+
+<pre class="cpp">class Student
+{
+ int rollno;
+ string name;
+ public:
+ Student(int x)
+ {
+  rollno=x;
+  name="None";
+ }
+ Student(int x, string str)
+ {
+  rollno=x ;
+  name=str ;
+ }
+};
+
+int main()
+{
+ Student A(10);
+ Student B(11,"Ram");
+}
+</pre>
+
+<p>In above case we have defined two constructors with different parameters, hence overloading the constructors.</p> 
+
+<p>One more important thing, if you define any constructor explicitly, then the compiler will not provide default constructor and you will have to define it yourself.</p>
+
+<p>In the above case if we write <code>Student S;</code> in <b>main()</b>, it will lead to a compile time error, because we haven't defined default constructor, and compiler will not provide its default constructor because we have defined other parameterized constructors.</p>
+<hr>
+
+<h3>Destructors</h3>
+
+<p>Destructor is a special class function which destroys the object as soon as the scope of object ends. The destructor is called automatically by the compiler when the object goes out of scope.</p>
+
+<p>The syntax for destructor is same as that for the constructor, the class name is used for the name of destructor, with a <b>tilde</b> <code>~</code> sign as prefix to it.</p>
+
+<pre class="cpp">class A
+{
+ public:
+ ~A();
+};
+</pre>
+<p>Destructors will never have any arguments.</p>
+<hr>
+<h4>Example to see how Constructor and Destructor is called</h4>
+<pre class="cpp">class A
+{
+A()
+ {
+  cout &lt;&lt; "Constructor called";
+ }
+
+~A()
+ {
+  cout &lt;&lt; "Destructor called";
+ }
+};
+
+int main()
+{
+ A obj1;   // Constructor Called
+ int x=1
+ if(x)
+  {
+   A obj2;  // Constructor Called
+  }   // Destructor Called for obj2
+} //  Destructor called for obj1
+
+</pre>
+<hr>
+<h4>Single Definition for both Default and Parameterized Constructor</h4>
+<p>In this example we will use <b>default argument</b> to have a single definition for both defualt and parameterized constructor.</p>
+<pre class="cpp">class Dual
+{
+ int a;
+ public:
+ Dual(int x=0)
+  {
+   a=x;
+  }
+};
+
+int main()
+{
+ Dual obj1;
+ Dual obj2(10);
+}
+</pre>
+<p>Here, in this program, a single Constructor definition will take care for both these object initializations. We don't need separate default and parameterized constructors.
+</p>
+</p>
+</div>
+</div>

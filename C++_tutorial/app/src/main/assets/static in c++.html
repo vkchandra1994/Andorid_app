@@ -1,0 +1,150 @@
+<div class="span8">
+<div id="body-content">
+
+<h3>Static Keyword</h3>
+<p>Static is a keyword in C++ used to give special characteristics to an element. Static elements are allocated storage only once in a program lifetime in static storage area. And they have a scope till the program lifetime. Static Keyword can be used with following,
+</p>
+<ol class="content">
+<li>Static variable in functions</li>
+<li>Static Class Objects</li>
+<li>Static member Variable in class</li>
+<li>Static Methods in class</li>
+</ol>
+<hr>
+
+<h4>Static variables inside Functions</h4>
+<p>Static variables when used inside function are initialized only once, and then they hold there value even through function calls.</p>
+<p>These static variables are stored on static storage area , not in stack.</p>
+<pre class="cpp">void counter()
+{
+ <font color="red">static int count=0;</font>
+ cout &lt;&lt; count++;
+}
+
+int main(0
+{
+ for(int i=0;i&lt;5;i++)
+ {
+   counter();
+ }
+}
+</pre>
+<p>Output : </p>
+<pre class="none">0 1 2 3 4
+</pre>
+
+<p>Let's se the same program's output <b>without using static</b> variable.
+</p><pre class="cpp">void counter()
+{
+ <font color="red">int count=0;</font>
+ cout &lt;&lt; count++;
+}
+
+int main(0
+{
+ for(int i=0;i&lt;5;i++)
+ {
+   counter();
+ }
+}
+</pre>
+<p>Output : </p>
+<pre class="none">0 0 0 0 0
+</pre>
+
+<p>If we do not use static keyword, the variable count, is reinitialized everytime when counter() function is called, and gets destroyed each time when counter() functions ends. But, if we make it static, once initialized count will have a scope till the end of main() function and it will carry its value through function calls too.</p>
+<p>If you don't initialize a static variable, they are by default initialized to zero.</p>
+<hr>
+
+<h4>Static class Objects</h4>
+<p>Static keyword works in the same way for class objects too. Objects declared static are allocated storage in static storage area, and have scope till the end of program.</p>
+
+<p>Static objects are also initialized using constructors like other normal objects. Assignment to zero, on using static keyword is only for primitive datatypes, not for user defined datatypes.</p>
+
+<pre class="cpp">class Abc
+{
+ int i;
+ public:
+ Abc()
+ {
+  i=0;
+  cout &lt;&lt; "constructor";
+ }
+ ~Abc()
+ {
+   cout &lt;&lt; "destructor";
+ }
+};
+
+void f()
+{
+ <font color="red">static Abc obj;</font>
+}
+
+int main()
+{
+ int x=0;
+ if(x==0)
+ {
+  f();
+ }
+ cout &lt;&lt; "END";
+}
+</pre>
+<p>Output : </p>
+<pre class="none">constructor END destructor
+</pre>
+
+<p>You must be thinking, why was destructor not called upon the end of the scope of if condition. This is because object was static, which has scope till the program lifetime, hence destructor for this object was called when main() exits.</p>
+<hr>
+
+<h4>Static data member in class</h4>
+<p>Static data members of class are those members which are shared by all the objects. Static data member has a single piece of storage, and is not available as separate copy with each object, like other non-static data members.</p>
+
+<p>Static member variables (data members) are not initialied using constructor, because these are not dependent on object initialization.</p>
+
+<p>Also, it must be initialized explicitly, always outside the class. If not initialized, Linker will give error.</p>
+<pre class="cpp">class X
+{
+ static int i;
+ public:
+ X(){};
+};
+
+<font color="blue">int X::i=1;</font>
+
+int main()
+{
+ X obj;
+ cout &lt;&lt; obj.i;   // prints value of i
+}
+
+</pre>
+
+<p>Once the definition for static data member is made, user cannot redefine it. Though, arithmetic operations can be performed on it.</p>
+<hr>
+
+<h4>Static Member Functions</h4>
+
+<p>These functions work for the class as whole rather than for a particular object of a class.</p>
+
+<p>It can be called using an object and the direct member access <code>.</code> operator. But, its more typical to call a static member function by itself, using class name and scope resolution <code>::</code> operator.
+</p>
+<p><i>Example </i>:</p>
+<pre class="cpp">class X
+{
+ public:
+ static void f(){};
+};
+
+int main()
+{
+ <font color="red">X::f()</font>;   // calling member function directly with class name
+}
+</pre>
+<p>
+These functions cannot access ordinary data members and member functions, but only static data members and static member functions.
+</p>
+<p>It doesn't have any "this" keyword which is the reason it cannot access ordinary members. We will study about "this" keyword later.
+</div>
+</div>

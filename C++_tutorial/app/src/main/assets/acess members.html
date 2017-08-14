@@ -1,0 +1,138 @@
+<div class="span8">
+<div id="body-content">
+<h3>Accessing Data Members of Class</h3>
+<p>Accessing a data member depends solely on the access control of that data member. If its public, then the data member can be easily accessed using the direct member access <code>(.)</code> operator with the object of that class.
+</p>
+
+<p>If, the data member is defined as private or protected, then we cannot access the data variables directly. Then we will have to create special public member functions to access, use or initialize the private and protected data members. These member functions are also called <b>Accessors</b> and <b>Mutator</b> methods or <b>getter</b> and <b>setter</b> functions.
+</p>
+<hr>
+
+<h4>Accessing Public Data Members</h4>
+<p>Following is an example to show you how to initialize and use the public data members using the dot (.) operator and the respective object of class.
+</p>
+
+<pre class="cpp">class Student
+{
+ public:
+ int rollno;
+ string name;
+};
+
+int main()
+{
+ Student A;
+ Student B;
+ A.rollno=1;
+ A.name="Adam";
+
+ B.rollno=2;
+ B.name="Bella";
+
+ cout &lt;&lt;"Name and Roll no of A is :"&lt;&lt; A.name &lt;&lt; A.rollno;
+ cout &lt;&lt;"Name and Roll no of B is :"&lt;&lt; B.name &lt;&lt; B.rollno;
+}
+</pre>
+<hr>
+
+<h4>Accessing Private Data Members</h4>
+<p>To access, use and initialize the private data member you need to create getter and setter functions, to get and set the value of the data member. 
+</p>
+<p>The setter function will set the value passed as argument to the private data member, and the getter function will return the value of the private data member to be used. Both getter and setter function must be defined public.
+</p>
+<p><i>Example</i> :</p>
+<pre class="cpp">class Student
+{
+ private:    // private data member
+ int rollno;
+
+ public:     // public accessor and mutator functions
+ int getRollno()
+ {
+  return rollno;
+ }
+
+ void setRollno(int i)
+ {
+  rollno=i;
+ }
+
+};
+
+int main()
+{
+ Student A;
+ A.rollono=1;  //Compile time error
+ cout&lt;&lt; A.rollno; //Compile time error
+
+ A.setRollno(1);  //Rollno initialized to 1
+ cout&lt;&lt; A.getRollno(); //Output will be 1
+}
+</pre>
+<p>So this is how we access and use the private data members of any class using the getter and setter methods. We will discuss this in more details later.
+</p>
+<hr>
+
+<h4>Accessing Protected Data Members</h4>
+<p>Protected data members, can be accessed directly using dot (.) operator inside the subclass of the current class, for non-subclass we will have to follow the steps same as to access private data member.
+</p>
+<hr>
+<div class="span8">
+
+
+<h3>Member Functions in Classes</h3>
+<p>Member functions are the functions, which have their declaration inside the class definition and works on the data members of the class. The definition of member functions can be inside or outside the definition of class. 
+</p>
+<p>If the member function is defined inside the class definition it can be defined directly, but if its defined outside the class, then we have to use the scope resolution <code>::</code> operator along with class name alng with function name.</p>
+
+<p><i>Example</i> :</p>
+<pre class="cpp">class Cube
+{
+ public:
+ int side;
+ <font color="red">int getVolume()</font>;     // Declaring function getVolume with no argument and return type int.
+};
+</pre>
+
+<br><p>If we define the function inside class then we don't not need to declare it first, we can directly define the function.
+</p>
+<pre class="cpp">class Cube
+{
+ public:
+ int side;
+ int getVolume()
+ {
+  return side*side*side;       //returns volume of cube
+ }
+};
+</pre>
+<br><p>But if we plan to define the member function outside the class definition then we must declare the function inside class definition and then define it outside.
+</p>
+<pre class="cpp">class Cube
+{
+ public:
+ int side;
+ int getVolume();
+}
+
+int Cube :: getVolume()     // defined outside class definition
+{
+ return side*side*side;
+}
+</pre>
+<br><p>The maine function for both the function definition will be same. Inside main() we will create object of class, and will call the member function using dot <code>.</code> operator.
+</p>
+<pre class="cpp">int main()
+{
+ Cube C1;
+ C1.side=4;   // setting side value
+ cout&lt;&lt; "Volume of cube C1 ="&lt;&lt; <font color="red">C1.getVolume()</font>;
+}
+</pre>
+<p>Similarly we can define the getter and setter functions to access private data members,  inside or outside the class definition.
+</p>
+</p></div>
+</div>
+</p>
+</div>
+</div>

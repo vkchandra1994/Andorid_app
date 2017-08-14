@@ -1,0 +1,80 @@
+<div id="body-content">
+
+<h3>Virtual Destructors</h3>
+<p>Destructors in the Base class can be Virtual. Whenever Upcasting is done, Destructors of the Base class must be made virtual for proper destrucstion of the object when the program exits.</p>
+<p><b>NOTE :</b> Constructors are never Virtual, only Destructors can be Virtual.</p>
+<hr>
+<h4>Upcasting without Virtual Destructor</h4>
+<p>Lets first see what happens when we do not have a virtual Base class destructor.</p>
+<pre class="cpp">class Base
+{
+ public:
+ ~Base() {cout &lt;&lt; "Base Destructor\t"; }
+};
+
+class Derived:public Base
+{
+ public:
+ ~Derived() { cout&lt;&lt; "Derived Destructor"; }
+}; 
+
+int main()
+{
+ Base* b = new Derived;     <font color="green">//Upcasting</font>
+ delete b;
+}
+</pre>
+<p>Output : </p>
+<pre class="none">Base Destructor</pre>
+<p>In the above example, <b>delete b</b> will only call the Base class destructor, which is undesirable because, then the object of Derived class remains undestructed, because its destructor is never called. Which results in memory leak.</p>
+<hr>
+<h4>Upcasting with Virtual Destructor</h4>
+<p>Now lets see. what happens when we have Virtual destructor in the base class.</p>
+<pre class="cpp">class Base
+{
+ public:
+ <b>virtual</b> ~Base() {cout &lt;&lt; "Base Destructor\t"; }
+};
+
+class Derived:public Base
+{
+ public:
+ ~Derived() { cout&lt;&lt; "Derived Destructor"; }
+}; 
+
+int main()
+{
+ Base* b = new Derived;     <font color="green">//Upcasting</font>
+ delete b;
+}
+</pre>
+<p>Output :</p>
+<pre class="none">Derived Destructor
+Base Destructor
+</pre>
+<p>When we have Virtual destructor inside the base class, then first Derived class's destructor is called and then Base class's destructor is called, which is the desired behaviour.</p>
+<hr>
+<h4>Pure Virtual Destructors</h4>
+<ul class="content">
+<li>Pure Virtual Destructors are legal in C++. Also, pure virtual Destructors must be defined, which is against the pure virtual behaviour. </li>
+<li>The only difference between Virtual and Pure Virtual Destructor is, that pure virtual destructor will make its Base class Abstract, hence you cannot create object of that class.</li>
+<li>There is no requirement of implementing pure virtual destructors in the derived classes.</li>
+</ul>
+<pre class="cpp">class Base
+{
+ public:
+ <b>virtual</b> ~Base() = 0;     <font color="green">//Pure Virtual Destructor</font>
+};
+
+<b>Base::~Base()</b> { cout &lt;&lt; "Base Destructor"; } <font color="green">//Definition of Pure Virtual Destructor</font>
+
+class Derived:public Base
+{
+ public:
+ ~Derived() { cout&lt;&lt; "Derived Destructor"; }
+}; 
+</pre>
+<hr>
+
+</p></div>
+</div>

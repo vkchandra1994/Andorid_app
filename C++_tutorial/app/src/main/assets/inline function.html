@@ -1,0 +1,126 @@
+<div class="span8">
+<div id="body-content">
+
+<h3>Inline Functions in C++</h3>
+<p>
+All the member functions defined inside the class definition are by default declared as Inline. Let us have some background knowledge about these functions.</p>
+<p>You must remember Preprocessors from C language. Inline functions in C++ do the same thing what Macros do in C. Preprocessors were not used in C++ because they had some drawbacks.
+</p>
+<hr>
+
+<h3>Drawbacks of Macro</h3>
+<p>In Macro, we define certain variable with its value at the beginning of the program, and everywhere inside the program where we use that variable, its replaced by its value on Compilation.
+</p><br>
+<h4>1) Problem with spacing </h4>
+<p>Let us see this problem using an example,</p>
+<pre class="cpp">#define G (y) (y+1)</pre>
+<p>Here we have defined a Macro with name G(y), which is to be replaced by its value, that is (y+1) during compilation. But, what actually happens when we call G(y), </p>
+<pre class="cpp">G(1) //Macro will replace it</pre>
+<p>the preprocessor will expand it like,</p>
+<pre class="cpp">(y) (y+1) (1)</pre>
+<p>You must be thinking why this happened, this happened because of the spacing in Macro definition. Hence big functions with several expressions can never be used with macro, so Inline functions were introduced in C++.
+</p><br>
+
+<h4>2) Complex Argument Problem</h4>
+<p>In some cases such Macro expressions work fine for certain arguments but when we use complex arguments problems start arising.
+</p>
+
+<pre class="cpp">#define MAX(x,y) x&gt;y?1:0</pre>
+
+<p>Now if we use the expression,</p>
+
+<pre class="cpp">if(MAX(a&amp;0x0f,0x0f))  // Complex Argument
+</pre>
+
+<p>Macro will Expand to,</p>
+
+<pre class="cpp">if( a&amp;0x0f &gt; 0x0f ? 1:0)</pre>
+<p>Here precedence of operators will lead to problem, because precedence of <code>&amp;</code> is lower than that of <code>&gt;</code>, so the macro evaluation will surprise you. This problem can be solved though using parenthesis, but still for bigger expressions problem will arise.</p><br>
+
+<h4>3) No way to access Private Members of Class </h4>
+<p>With Macros, in C++ you can never access private variables, so you will have to make those members public, which will expose the implementation.
+</p>
+
+<pre class="cpp">class Y
+{
+ int x;
+ public : 
+ #define VAL(Y::x)   // Its an Error
+}
+</pre>
+<hr>
+
+<h3>Inline Functions</h3>
+<p>Inline functions are actual functions, which are copied everywhere during compilation, like preprocessor macro, so the overhead of function calling is reduced. All the functions defined inside class definition are by default inline, but you can also make any non-class function inline by using keyword <b>inline</b> with them.
+</p>
+<p>For an inline function, declaration and definition must be done together. For example,
+</p>
+<pre class="cpp">inline void fun(int a) 
+{ 
+  return a++; 
+}
+</pre>
+<br>
+<h4>Some Important points about Inline Functions</h4>
+<ol class="content">
+<li>We must keep inline functions small, small inline functions have better efficiency.</li>
+<li>Inline functions do increase efficiency, but we should not make all the functions inline. Because if we make large functions inline, it may lead to <b>code bloat</b>, and might affect the speed too.</li>
+
+<li>Hence, it is adviced to define large functions outside the class definition using scope resolution <code>::</code> operator, because if we define such functions inside class definition, then they become inline automatically.</li>
+
+<li>Inline functions are kept in the Symbol Table by the compiler, and all the call for such functions is taken care at compile time.</li>
+</ol>
+<hr>
+
+<h4>Access Functions</h4>
+<p>We have already studied this in topic Accessing Private Data variables inside class. We use access functions, which are inline to do so.
+</p>
+<pre class="cpp">class Auto
+{
+ int i;
+ public:
+ int getdata()
+  {
+   return i;
+  }
+ void setdata(int x)
+ {
+  i=x;
+ }
+};
+</pre>
+<p>Here getdata() and setdata() are inline functions, and are made to access the private data members of the class Auto. getdata(), in this case is called <b>Accessor</b> function and setdata() is a <b>Mutator</b> function.</p>
+<p>There can be overlaoded Accessor and Mutator functions too. We will study overloading functions in next topic.
+</p>
+<hr>
+<h3>Limitations of Inline Functions</h3>
+<ol class="content">
+<li>Large Inline functions cause Cache misses and affect performance negatively.</li>
+
+<li>Compilation overhead of copying the function body everywhere in the code on compilation, which is negligible for small programs, but it makes a difference in large code bases.</li>
+
+<li>Also, if we require address of the function in program, compiler cannot perform inlining on such functions. Because for providing address to a function, compiler will have to allocate storage to it. But inline functions doesn't get storage, they are kept in Symbol table.</li>
+</ol>
+<hr>
+
+<h4>Forward References</h4>
+<p>All the inline functions are evaluated by the compiler, at the end of class declaration.
+</p>
+<pre class="cpp">class ForwardReference
+{
+ int i;
+ public:
+ int f() {return g()+10;}  // call to undeclared function
+ int g() {return i;}
+};
+
+int main()
+{
+ ForwardReference fr;
+ fr.f();
+}
+</pre>
+<p>You must be thinking that this will lead to compile time error,but in this case it will work, because no inline function in a class is evaluated until the closing braces of class declaration.
+</p>
+</p></div>
+</div>

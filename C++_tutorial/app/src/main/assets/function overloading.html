@@ -1,0 +1,124 @@
+<div class="span8">
+<div id="body-content">
+
+<h3>Function Overloading</h3>
+<p>If any class have multiple functions with same names but different parameters then they are said to be overloaded. Function overloading allows you to use the same name for different functions, to perform, either same or different functions in the same class.</p>
+
+<p>Function overloading is usually used to enhance the readability of the program. If you have to perform one single operation but with different number or types of arguments, then you can simply overload the function.
+</p>
+<hr>
+<h4>Ways to overload a function</h4>
+<ol class="content">
+<li>By changing number of Arguments.</li>
+<li>By having different types of argument.</li>
+</ol>
+<hr>
+<h4>Number of Arguments different</h4>
+<p>In this type of function overloading we define two functions with same names but different number of parameters of the same type. For example, in the below mentioned program we have made two sum() functions to return sum of two and three integers.</p>
+
+<pre class="cpp">int sum (int x, int y)
+{
+ cout &lt;&lt; x+y;
+}
+
+int sum(int x, int y, int z)
+{
+ cout &lt;&lt; x+y+z;
+}
+</pre>
+<p>
+Here sum() function is overloaded, to have two and three arguments. Which sum() function will be called, depends on the number of arguments.</p>
+
+<pre class="cpp">int main()
+{
+sum (10,20);  // sum() with 2 parameter will be called
+
+sum(10,20,30);  //sum() with 3 parameter will be called
+}
+</pre>
+<hr>
+
+<h4>Different Datatype of Arguments</h4>
+<p>In this type of overloading we define two or more functions with same name and same number of parameters, but the type of parameter is different. For example in this program, we have two sum() function, first one gets two integer arguments and second one gets two double arguments.</p>
+
+<pre class="cpp">int sum(int x,int y)
+{
+ cout&lt;&lt; x+y;
+}
+
+double sum(double x,double y)
+{
+ cout &lt;&lt; x+y;
+}
+
+int main()
+{
+ sum (10,20);
+ sum(10.5,20.5);
+}
+</pre>
+<hr>
+<h3>Default Arguments</h3>
+<p>When we mention a default value for a parameter while declaring the function, it is said to be as default argument. In this case, even if we make a call to the function without passing any value for that parameter, the function will take the default value specified.</p>
+<pre class="cpp">sum(int x,int y=0)
+{
+ cout &lt;&lt; x+y;
+}
+</pre>
+<p>Here we have provided a default value for y, during function definition.</p>
+<pre class="cpp">int main()
+{
+ sum(10);
+ sum(10,0);
+ sum(10,10);
+}
+</pre>
+<p>Output : </p>
+<pre class="none">10 10 20</pre>
+<p>First two function calls will produce the exact same value.</p>
+<p>for the third function call, y will take 10 as value and output will become 20.</p>
+<p>By setting default argument, we are also overloading the function. Default arguments also allow you to use the same function in different situations just like function overloading.</p>
+<hr>
+<h4>Rules for using Default Arguments</h4>
+<ol class="content">
+<li>Only the last argument must be given default value. You cannot have a default argument followed by non-default argument.
+<pre class="cpp">sum (int x,int y);    
+sum (int x,int y=0);  
+sum (int x=0,int y);  // This is Incorrect
+</pre>
+</li>
+<li>If you default an argument, then you will have to default all the subsequent arguments after that.
+<pre class="cpp">sum (int x,int y=0);
+sum (int x,int y=0,int z);  // This is incorrect
+sum (int x,int y=10,int z=10);  // Correct
+</pre>
+</li>
+<li>You can give any value a default value to argument, compatible with its datatype.</li>
+</ol>
+<hr>
+
+<h4>Placeholder Arguments</h4>
+<p>When arguments in a function are declared without any identifier they are called placeholder arguments.</p>
+<pre class="cpp">void sum (int,int);
+</pre>
+<p>Such arguments can also be used with default arguments.</p>
+<pre>void sum (int, int=0);</pre>
+<hr>
+<div><ul class="pager">
+<li class="previous">
+<a href="inline-functions.php">← Prev</a>
+</li>
+<li class="next">
+<a href="constructors-and-destructors-in-cpp.php">Next →</a>
+</li>
+</ul></div>
+<hr>
+<p class="center">
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Big banner Below Content -->
+<ins class="adsbygoogle" style="display:inline-block;width:580px;height:400px" data-ad-client="ca-pub-6137246359299957" data-ad-slot="6135823823" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:580px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:580px;background-color:transparent"><iframe width="580" height="400" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:580px;height:400px;"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</p></div>
+</div>

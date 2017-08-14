@@ -1,0 +1,158 @@
+<div id="programiz-main-content">
+<section class="main-content">
+<h1>C++ Pointers and Arrays</h1>
+ 
+<div class="page-short-description">
+In this topic, you'll learn about the relation between arrays and pointers, and use them efficiently in your program.</div>
+
+  
+<img src="file:///android_asset/pointers_cpp_array.jpg" alt="C++ Pointers and Arrays" title="C++ Pointers and Arrays">
+<div class="clearfix">
+
+
+  <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+  <div class="content">
+    <div id="node-256" class="node node-cpp-tutorial clearfix" about="/cpp-programming/pointers-arrays" typeof="sioc:Item foaf:Document">
+<span property="dc:title" content="C++ Pointers and Arrays" class="rdf-meta element-hidden"></span><div class="content clearfix">
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Pointers are the variables that hold address. Not only can pointers store address of a single variable, it can also store address of cells of an C++ array.</p>
+<p>Consider this example:</p>
+<pre>int* ptr;
+int a[5];
+ptr = &amp;a[2];  // &amp;a[2] is the address of third element of a[5].
+</pre>
+<p><img alt="Pointer pointing to an array cell" src="file:///android_asset/pointers_cpp_arrays2.jpg" style="font-size: 13.008px;" title="Pointers to array"></p>
+<p></p><div id="adhuro-block-inject-1" class="adhuro-block-inject adhuro-block-inject-1"></div><p>Suppose, pointer needs to point to the fourth element of an array, that is, hold address of fourth array element in above case.</p>
+<p>Since <var>ptr</var> points to the third element in the above example, <code>ptr + 1</code> will point to the fourth element.</p>
+<p>You may think, <code>ptr + 1</code>&nbsp;gives you the address of next byte to the&nbsp;<code>ptr</code>. But it's not correct.</p>
+<p>This is because pointer <var>ptr</var> is a pointer to an&nbsp;<code>int</code> and size of <code>int</code> is fixed for a operating system (size of <code>int</code> is 4 byte of 64-bit operating system). Hence, the address between <code>ptr</code> and <code>ptr + 1</code> differs by 4 bytes.</p>
+<p>If pointer <var>ptr</var> was pointer to <code>char</code> then, the address between <code>ptr</code> and <code>ptr + 1</code> would have differed by 1 byte since size of a character is 1 byte.</p>
+<hr>
+<h2>Example 1: C++ Pointers and Arrays</h2>
+<p><strong>C++ Program to display address of elements of an array using both array and pointers</strong></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">float</span><span class="pln"> arr</span><span class="pun">[</span><span class="lit">5</span><span class="pun">];</span><span class="pln">
+    </span><span class="kwd">float</span><span class="pln"> </span><span class="pun">*</span><span class="pln">ptr</span><span class="pun">;</span><span class="pln">
+    
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Displaying address using arrays: "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"&amp;arr["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"] = "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">arr</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">// ptr = &amp;arr[0]</span><span class="pln">
+    ptr </span><span class="pun">=</span><span class="pln"> arr</span><span class="pun">;</span><span class="pln">
+
+    cout</span><span class="pun">&lt;&lt;</span><span class="str">"\nDisplaying address using pointers: "</span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"ptr + "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" = "</span><span class="pun">&lt;&lt;</span><span class="pln"> ptr </span><span class="pun">+</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p></p><div id="block-inject-1" class="block-inject block-inject-1"><div id="block-block-123" class="block block-block">
+
+</div><div class="clearfix"></div><p><b>Output</b></p>
+<pre><samp>Displaying address using arrays: 
+&amp;arr[0] = 0x7fff5fbff880
+&amp;arr[1] = 0x7fff5fbff884
+&amp;arr[2] = 0x7fff5fbff888
+&amp;arr[3] = 0x7fff5fbff88c
+&amp;arr[4] = 0x7fff5fbff890
+
+Displaying address using pointers: 
+ptr + 0 = 0x7fff5fbff880
+ptr + 1 = 0x7fff5fbff884
+ptr + 2 = 0x7fff5fbff888
+ptr + 3 = 0x7fff5fbff88c
+ptr + 4 = 0x7fff5fbff890
+</samp></pre>
+<p>In the above program, a different pointer <var>ptr</var> is used for displaying the address of array elements <var>arr</var>.</p>
+<p>But, array elements can be accessed using pointer notation by using same array name <var>arr</var>. For example:</p>
+<pre>int arr[3];
+
+&amp;arr[0] is equivalent to arr
+&amp;arr[1] is equivalent to arr + 1
+&amp;arr[2] is equivalen to arr + 2
+</pre>
+<hr>
+<h2>Example 2: Pointer and Arrays</h2>
+<p><b>C++ Program to display address of array elements using pointer notation.</b></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">float</span><span class="pln"> arr</span><span class="pun">[</span><span class="lit">5</span><span class="pun">];</span><span class="pln">
+    
+    cout</span><span class="pun">&lt;&lt;</span><span class="str">"Displaying address using pointers notation: "</span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> arr </span><span class="pun">+</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln">endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><b>Output</b></p>
+<pre>Displaying address using pointers notation: 
+0x7fff5fbff8a0
+0x7fff5fbff8a4
+0x7fff5fbff8a8
+0x7fff5fbff8ac
+0x7fff5fbff8b0</pre>
+<p>You know that, pointer <var>ptr</var> holds the address and expression <code>*ptr</code> gives the value stored in the address.</p>
+<p>Similarly, you can get the value stored in the pointer <code>ptr + 1</code> using <code>*(ptr + 1)</code>.</p>
+<p>Consider this code below:</p>
+<pre>int ptr[5] = {3, 4, 5, 5, 3};</pre>
+<ul>
+	<li><code>&amp;ptr[0]</code> is equal to <code>ptr</code> and <code>*ptr</code> is equal to <code>ptr[0]</code></li>
+	<li><code>&amp;ptr[1]</code> is equal to <code>ptr + 1</code> and <code>*(ptr + 1)</code>&nbsp;is equal to <code>ptr[1]</code></li>
+	<li><code>&amp;ptr[2]</code> is equal to <code>ptr + 2</code> and <code>*(ptr + 2)</code> is equal to <code>ptr[2]</code></li>
+	<li><code>&amp;ptr[i]</code> is equal to <code>ptr + i</code>&nbsp;and <code>*(ptr + i)</code> is equal to <code>ptr[i]</code></li>
+</ul>
+<hr>
+<h2>Example 3: C++ Pointer and Array</h2>
+<p><b>C++ Program to insert and display data entered by using pointer notation.</b></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">float</span><span class="pln"> arr</span><span class="pun">[</span><span class="lit">5</span><span class="pun">];</span><span class="pln">
+    
+   </span><span class="com">// Inserting data using pointer notation</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter 5 numbers: "</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        cin </span><span class="pun">&gt;&gt;</span><span class="pln"> </span><span class="pun">*(</span><span class="pln">arr </span><span class="pun">+</span><span class="pln"> i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">// Displaying data using pointer notation</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Displaying data: "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="pun">*(</span><span class="pln">arr </span><span class="pun">+</span><span class="pln"> i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl </span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><b>Output</b></p>
+<pre><samp>Enter 5 numbers: 2.5
+3.5
+4.5
+5
+2
+Displaying data: 
+2.5
+3.5
+4.5
+5
+2</samp></pre>
+</div></div></div></div>
+</div>  </div>
+</div>
+  </div>
+  </div>
+</div>
+    </section>
+</div>

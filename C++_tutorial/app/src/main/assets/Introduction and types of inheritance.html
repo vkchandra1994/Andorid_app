@@ -1,0 +1,190 @@
+<h3>Overview of Inheritance</h3>
+<p>Inheritance is the capability of one class to acquire properties and characteristics from another class. The class whose properties are inherited by other class is called the <b>Parent</b> or <b>Base</b> or <b>Super</b> class. And, the class which inherits properties of other class is called <b>Child</b> or <b>Derived</b> or <b>Sub</b> class.</p>
+
+<p>Inheritance makes the code reusable. When we inherit an existing class, all its methods and fields become available in the new class, hence code is reused.</p>
+
+<p><b>NOTE : </b> All members of a class except Private, are inherited</p>
+<hr>
+
+<h4>Purpose of Inheritance</h4>
+<ol class="content">
+<li>Code Reusability</li>
+<li>Method Overriding (Hence, Runtime Polymorphism.)</li>
+<li>Use of Virtual Keyword</li>
+</ol>
+<hr>
+
+<h4>Basic Syntax of Inheritance</h4>
+<pre class="cpp">class Subclass_name : access_mode Superclass_name
+</pre>
+<p>While defining a subclass like this, the super class must be already defined or atleast declared before the subclass declaration.</p>
+<p>Access Mode is used to specify, the mode in which the properties of superclass will be inherited into subclass, public, privtate or protected.</p>
+<hr>
+<h4>Example of Inheritance</h4>
+<p class="center"><p>"Example for Inheritance in C++"></p>
+<pre class="cpp">class Animal
+{ public:
+  int legs = 4;
+};
+
+class Dog : public Animal
+{ public:
+  int tail = 1;
+};
+
+int main()
+{
+ Dog d;
+ cout &lt;&lt; d.legs;
+ cout &lt;&lt; d.tail;
+}
+</pre>
+<p>Output : </p>
+<pre class="none">4 1</pre>
+<hr>
+
+<h3>Inheritance Visibility Mode</h3>
+<p>Depending on Access modifier used while inheritance, the availability of class members of Super class in the sub class changes. It can either be private, protected or public.</p><br>
+
+<h4>1) Public Inheritance</h4>
+<p>This is the most used inheritance mode. In this the protected member of super class becomes protected members of sub class and public becomes public.</p>
+<pre class="cpp">class Subclass : <b>public</b> Superclass</pre>
+<br>
+
+<h4>2) Private Inheritance</h4>
+<p>In private mode, the protected and public members of super class become private members of derived class.</p>
+<pre class="cpp">class Subclass : Superclass   // By default its private inheritance</pre>
+<br>
+
+<h4>3) Protected Inheritance</h4>
+<p>In protected mode, the public and protected members of Super class becomes protected members of Sub class.</p>
+<pre class="cpp">class subclass : <b>protected</b> Superclass</pre>
+<hr>
+
+<h4>Table showing all the Visibility Modes</h4>
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th></th><th>Derived Class</th><th>Derived Class</th><th>Derived Class</th></tr>
+<tr><th>Base class</th><th>Public Mode</th><th>Private Mode</th><th>Protected Mode</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Private</td>
+<td>Not Inherited</td>
+<td>Not Inherited</td>
+<td>Not Inherited</td>
+</tr>
+
+<tr>
+<td>Protected</td>
+<td>Protected</td>
+<td>Private</td>
+<td>Protected</td>
+</tr>
+
+<tr>
+<td>Public</td>
+<td>Public</td>
+<td>Private</td>
+<td>Protected</td>
+</tr>
+</tbody>
+    </table>
+<hr>
+<h3>Types of Inheritance</h3>
+<p>In C++, we have 5 different types of Inheritance. Namely,</p>
+<ol class="content">
+<li>Single Inheritance</li>
+<li>Multiple Inheritance</li>
+<li>Hierarchical Inheritance</li>
+<li>Multilevel Inheritance</li>
+<li>Hybrid Inheritance (also known as Virtual Inheritance)</li>
+</ol>
+<hr>
+<h4>Single Inheritance</h4>
+<p>In this type of inheritance one derived class inherits from only one base class. It is the most simplest form of Inheritance.</p>
+<p class="center"><img src="file:///android_asset/inheritance1.jpg"></p>
+<hr>
+<p>Example</p>
+<pre class="cpp">class Person
+{
+private:
+char fname[100],lname[100],gender[10];
+protected:
+int age;
+public:
+void input_person();
+void display_person();
+};
+
+class student: public person    /*Child class*/
+{
+private:
+char college_name[100];
+char level[20];
+public:
+void input_student();
+void display_student();
+};
+
+void person::input_person()
+{
+cout<<"First Name: ";
+cin>>fname;
+cout<<"Last Name: ";
+cin>>lname;
+cout<<"Gender: ";
+cin>>gender;
+cout<<"Age: ";
+cin>>age;
+}
+
+void person::display_person()
+{
+ cout &lt;&lt; "fname";
+            cout &lt;&lt; "lname";
+ cout &lt;&lt; "gender";
+  cout &lt;&lt; "age";
+}
+
+void student::input_student()
+{
+person::input_person();
+cout<<"College name: ";
+cin>>college_name
+}
+
+void student::display_student()
+{
+person::display_person();
+     cout &lt;&lt; "college name";
+
+}
+
+int main()
+{
+student s;
+cout<<"Input data";
+s.input_student();
+cout<<"Display data";
+s.display_student();
+return 0;
+}
+
+<h4>Multiple Inheritance</h4>
+<p>In this type of inheritance a single derived class may inherit from two or more than two base classes.</p>
+<p class="center"><img src="file:///android_asset/inheritance2.jpg"></p>
+<hr>
+
+<h4>Hierarchical Inheritance</h4>
+<p>In this type of inheritance, multiple derived classes inherits from a single base class.</p>
+<p class="center"><img src="file:///android_asset/inheritance3.jpg"></p>
+<hr>
+<h4>Multilevel Inheritance</h4>
+<p>In this type of inheritance the derived class inherits from a class, which in turn inherits from some other class. The Super class for one, is sub class for the other.</p>
+<p class="center"><img src="file:///android_asset/inheritance4.jpg"></p>
+<hr>
+<h4>Hybrid Inheritance</h4>
+<p>
+ <p>Hybrid Inheritance is combination of Hierarchical and Mutilevel Inheritance.</p>
+<p class="center"><img src="file:///android_asset/inheritance5.jpg"></p>

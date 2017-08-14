@@ -1,0 +1,98 @@
+<div id="body-content">
+<h3>Polymorphism</h3>
+<p>Polymorphism means having multiple forms of one thing. In inheritance, polymorphism is done, by method overriding, when both super and sub class have member function with same declaration bu different definition.</p>
+<hr>
+<h4>Function Overriding</h4>
+<p>If we inherit a class into the derived class and provide a definition for one of the base class's function again inside the derived class, then that function is said to be <b>overridden</b>, and this mechanism is called <b>Function Overriding</b></p>
+<hr>
+<h4>Requirements for Overriding</h4>
+<ol class="content">
+<li>Inheritance should be there. Function overriding cannot be done within a class. For this we require a derived class and a base class.
+</li>
+<li>Function that is redefined must have exactly the same declaration in both base and derived class, that means same name, same return type and same parameter list.</li>
+</ol>
+<hr>
+<h4>Example of Function Overriding</h4>
+<pre class="cpp">class Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Base class";
+ }
+};
+class Derived:public Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Derived Class";
+ }
+}
+</pre>
+<p>In this example, function <b>show()</b> is overridden in the derived class. Now let us study how these overridden functions are called in <b>main()</b> function.</p>
+<hr>
+<h4>Function Call Binding with class Objects</h4>
+<p>Connecting the function call to the function body is called <b>Binding</b>. When it is done before the program is run, its called <b>Early</b> Binding or <b>Static</b> Binding or <b>Compile-time</b> Binding.</p>
+<pre class="cpp">class Base
+{
+ public:
+ void shaow()
+ {
+  cout &lt;&lt; "Base class\t";
+ }
+};
+class Derived:public Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Derived Class";
+ }
+}
+
+int main()
+{
+ Base b;       <font color="green">//Base class object</font>
+ Derived d;     <font color="green">//Derived class object</font>
+ b.show();     <font color="red">//Early Binding Ocuurs</font>
+ d.show();   
+}
+</pre>
+<p><code>Output : Base class &nbsp; &nbsp;Derived class</code></p>
+<p>In the above example, we are calling the overrided function using Base class and Derived class object. Base class object will call base version of the function and derived class's object will call the derived version of the function.</p>
+
+<hr>
+<h4>Function Call Binding using Base class Pointer</h4>
+<p>But when we use a Base class's pointer or reference to hold Derived class's object, then Function call Binding gives some unexpected results.</p>
+<pre class="cpp">class Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Base class";
+ }
+};
+class Derived:public Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Derived Class";
+ }
+}
+
+int main()
+{
+ Base* b;       <font color="green">//Base class pointer</font>
+ Derived d;     <font color="green">//Derived class object</font>
+ b = &amp;d;
+ b-&gt;show();     <font color="red">//Early Binding Occurs</font>
+}
+</pre>
+<p><code>Output : Base class</code></p>
+<p>In the above example, although, the object is of Derived class, still Base class's method is called. This happens due to Early Binding.</p>
+<p>Compiler on seeing <b>Base class's pointer</b>, set call to Base class's <b>show()</b> function, without knowing the actual object type.</p>
+<hr>
+</p></div>
+</div>

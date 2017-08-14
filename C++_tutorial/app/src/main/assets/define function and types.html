@@ -1,0 +1,146 @@
+<div id="programiz-main-content">
+<section class="main-content">
+<h1>C++ Functions</h1>
+ 
+<div class="page-short-description">
+In this topic, you'll learn everything about functions in C++; what type of functions are there, how to use them with examples.</div>
+  
+
+<div class="region region-content">n programming, function refers to a segment that groups code to perform a specific task.</p>
+<p>Depending on whether a function is predefined or created by programmer; there are two types of function:</p>
+<ol>
+	<li>Library Function</li>
+	<li>User-defined Function</li>
+</ol>
+<hr>
+<h2>Library Function</h2>
+<p>Library functions are the built-in function in C++ programming.</p>
+<p>Programmer can use library function by invoking function directly; they don't need to write it themselves.</p>
+<h3>Example 1: Library Function</h3>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;cmath&gt;</span><span class="pln">
+
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">double</span><span class="pln"> number</span><span class="pun">,</span><span class="pln"> squareRoot</span><span class="pun">;</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter a number: "</span><span class="pun">;</span><span class="pln">
+    cin </span><span class="pun">&gt;&gt;</span><span class="pln"> number</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// sqrt() is a library function to calculate square root</span><span class="pln">
+    squareRoot </span><span class="pun">=</span><span class="pln"> sqrt</span><span class="pun">(</span><span class="pln">number</span><span class="pun">);</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Square root of "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> number </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" = "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> squareRoot</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p></p><div id="adhuro-block-inject-1" class="adhuro-block-inject adhuro-block-inject-1"></div><p><b>Output</b></p>
+<pre><samp>Enter a number: 26
+Square root of 26 = 5.09902</samp></pre>
+<p>In the example above, <code>sqrt()</code> library function is invoked to calculate the square root of a number.</p>
+<p>Notice code <code>#include &lt;cmath&gt;</code> in the above program. Here, <code>cmath</code> is a header file. The function definition of <code>sqrt()</code>(body of that function) is present in the cmath header file.</p>
+<p>You can use all functions defined in <code>cmath</code> when you include the content of file <code>cmath</code> in this program using <code>#include &lt;cmath&gt;</code> .</p>
+<p>Every valid C++ program has at least one function, that is, <code>main()</code> function.</p>
+<hr>
+<h2>User-defined Function</h2>
+<p>C++ allows programmer to define their own function.</p>
+<p>A user-defined function groups code to perform a specific task and that group of code is given a name(identifier).</p>
+<p>When the function is invoked from any part of program, it all executes the codes defined in the body of function.</p>
+<hr>
+<h3>How user-defined function works in C++ Programming?</h3>
+<p><img alt="Working of function in C++ programming" src="file:///android_asset/fun1.jpg"></p>
+<p></p><div id="block-inject-1" class="block-inject block-inject-1"><div id="block-block-123" class="block block-block">
+
+</div><div class="clearfix"></div><p>Consider the figure above.</p>
+<p>When a program begins running, the system calls the <code>main()</code> function, that is, the system starts executing codes from <code>main()</code> function.</p>
+<p>When control of the program reaches to <code>function_name()</code> inside <code>main()</code>, it moves to <code>void function_name() </code>and all codes inside <code>void function_name()</code> is executed.</p>
+<p>Then, control of the program moves back to the main function where the code after the call to the <code>function_name()</code> is executed as shown in figure above.</p>
+<hr>
+<h3>Example 2: User Defined Function</h3>
+<p><b>C++ program to add two integers. Make a function <code>add()</code> to add integers and display sum in main() function.</b></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// Function prototype (declaration)</span><span class="pln">
+</span><span class="kwd">int</span><span class="pln"> add</span><span class="pun">(</span><span class="kwd">int</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> num1</span><span class="pun">,</span><span class="pln"> num2</span><span class="pun">,</span><span class="pln"> sum</span><span class="pun">;</span><span class="pln">
+    cout</span><span class="pun">&lt;&lt;</span><span class="str">"Enters two numbers to add: "</span><span class="pun">;</span><span class="pln">
+    cin </span><span class="pun">&gt;&gt;</span><span class="pln"> num1 </span><span class="pun">&gt;&gt;</span><span class="pln"> num2</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Function call</span><span class="pln">
+    sum </span><span class="pun">=</span><span class="pln"> add</span><span class="pun">(</span><span class="pln">num1</span><span class="pun">,</span><span class="pln"> num2</span><span class="pun">);</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Sum = "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> sum</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Function definition</span><span class="pln">
+</span><span class="kwd">int</span><span class="pln"> add</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> a</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> b</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> add</span><span class="pun">;</span><span class="pln">
+    add </span><span class="pun">=</span><span class="pln"> a </span><span class="pun">+</span><span class="pln"> b</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Return statement</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> add</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><b>Output</b></p>
+<pre><samp>Enters two integers: 8
+-4
+Sum = 4</samp></pre>
+<hr>
+<h3>Function prototype (declaration)</h3>
+<p>If a user-defined function is defined after <code>main()</code> function, compiler will show error. It is because compiler is unaware of user-defined function, types of argument passed to function and return type.</p>
+<p>In C++, function prototype is a declaration of function without its body to give compiler information about user-defined function. Function prototype in the above example is:</p>
+<pre>int add(int, int);</pre>
+<p>You can see that, there is no body of function in prototype. Also, there are only return type of arguments but no arguments. You can also declare function prototype as below but it's not necessary to write arguments.</p>
+<pre>int add(int a, int b);</pre>
+<p><b>Note:</b> It is not necessary to define prototype if user-defined function exists before <code>main()</code> function.</p>
+<hr>
+<h3>Function Call</h3>
+<p>To execute the codes of function body, the user-defined function needs to be invoked(called).</p>
+<p>In the above program, <code>add(num1,num2);</code> inside <code>main()</code> function calls the user-defined function.</p>
+<p>The function returns an integer which is stored in variable <var>add</var>.</p>
+<hr>
+<h3>Function Definition</h3>
+<p>The function itself is referred as function definition. Function definition in the above program is:</p>
+<pre>// Function definition
+int add(int a,int b)
+{
+    int add;
+    add = a + b;
+    return add;
+}</pre>
+<p>When the function is called, control is transferred to the first statement of the function body.</p>
+<p>Then, other statements in function body are executed sequentially.</p>
+<p>When all codes inside function definition is executed, control of program moves to the calling program.</p>
+<hr>
+<h3>Passing Arguments to Function</h3>
+<p>In programming, argument (parameter) refers to the data which is passed to a function (function definition) while calling it.</p>
+<p>In the above example, two variables, <var>num1</var> and <var>num2</var> are passed to function during function call. These arguments are known as actual arguments.</p>
+<p>The value of <var>num1</var> and <var>num2</var> are initialized to variables <var>a</var> and <var>b</var> respectively. These arguments <var>a</var> and <var>b</var> are called formal arguments.</p>
+<p>This is demonstrated in figure below:</p>
+<p><img alt="Passing argument to a function in C++ programming" src="file:///android_asset/fun2.jpg"></p>
+<p><strong>Notes on passing arguments</strong></p>
+<ul>
+	<li>The numbers of actual arguments and formals argument should be the same. (Exception:Function Overloading)</li>
+	<li>The type of first actual argument should match the type of first formal argument. Similarly, type of second actual argument should match the type of second formal argument and so on.</li>
+	<li>You may call function a without passing any argument. The number(s) of argument passed to a function depends on how programmer want to solve the problem.</li>
+	<li>You may assign default values to the argument. These arguments are known as default arguments</a>.</li>
+	<li>In the above program, both arguments are of <code>int</code> type. But it's not necessary to have both arguments of same type.</li>
+</ul>
+<hr>
+<h3>Return Statement</h3>
+<p>A function can return a single value to the calling program using return statement.</p>
+<p>In the above program, the value of <var>add</var> is returned from user-defined function to the calling program using statement below:</p>
+<pre>return add;</pre>
+<p>The figure below demonstrates the working of return statement.</p>
+<p><img alt="Returning value from a function in C++ programming." src="file:///android_asset/fun3.jpg"></p>
+<p>In the above program, the value of <var>add</var> inside user-defined function is returned to the calling function. The value is then stored to a <var>variable</var> sum.</p>
+<p>Notice that the variable returned, i.e., <var>add</var> is of type <code>int</code> and <var>sum</var> is also of <var>int</var> type.</p>
+<p>Also, notice that the return type of a function is defined in function declarator <code>int add(int a, int b)</code>.&nbsp;<span style="font-size: 13.008px;">The </span><code>int</code><span style="font-size: 13.008px;"> before </span><code>add(int a, int b)</code><span style="font-size: 13.008px;"> means the function should return a value of type </span><code>int</code><span style="font-size: 13.008px;">.</span></p>
+<p>If no value is returned to the calling function then, <code>void</code> should be used.</p>
+</div>
+</div>
+</section>
+</div>

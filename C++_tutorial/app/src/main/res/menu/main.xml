@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sharable"
+        android:orderInCategory="100"
+        android:title="Shar this app"
+        android:icon="@drawable/share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/log_id"
+        android:title="Login"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/reg_id"
+        android:title="Register"
+        app:showAsAction="always"/>
+
+</menu>

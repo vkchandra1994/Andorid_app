@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/cpp"
+            android:icon="@drawable/notes"
+            app:showAsAction="always"
+            android:title="C++ Theory" />
+        <item
+            android:id="@+id/programs"
+            android:icon="@drawable/programs"
+            app:showAsAction="always"
+            android:title="Programs with Solution" />
+
+        <item
+            android:id="@+id/question"
+            android:icon="@drawable/question"
+            app:showAsAction="always"
+            android:title="Practice Question" />
+
+        <item
+            android:id="@+id/interview"
+            android:icon="@drawable/interview"
+            app:showAsAction="always"
+            android:title="Interview Question"/>
+        <item
+            android:id="@+id/mcq"
+            android:icon="@drawable/interview"
+            app:showAsAction="always"
+            android:title="Mutiple Choice Question"/>
+    </group>
+
+</menu>

@@ -1,0 +1,116 @@
+<div id="body-content">
+
+<h3>Virtual Functions</h3>
+<p>Virtual Function is a function in base class, which is overrided in the derived class,
+    and which tells the compiler to perform <b>Late Binding</b> on this function.</p>
+<p><code>Virtual</code> Keyword is used to make a member function of the base class Virtual.</p>
+<hr>
+<h4>Late Binding</h4>
+<p>In Late Binding function call is resolved at runtime. Hence, now compiler determines the type of object at runtime,
+    and then binds the function call. Late Binding is also called <b>Dynamic</b> Binding or <b>Runtime</b> Binding.</p>
+<hr>
+<h4>Problem without Virtual Keyword</h4>
+<pre class="cpp">class Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Base class";
+ }
+};
+class Derived:public Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Derived Class";
+ }
+}
+
+int main()
+{
+ Base* b;       <i>//Base class pointer</i>
+ Derived d;     <i>//Derived class object</i>
+ b = &amp;d;
+ b-&gt;show();     <i>//Early Binding Ocuurs</i>
+}
+</pre>
+<p><code>Output : Base class</code></p>
+<p>When we use Base class's pointer to hold Derived class's object, base class pointer or reference will always call the base version of the function</p>
+
+<hr>
+<h4>Using Virtual Keyword</h4>
+<p>We can make base class's methods virtual by using <b>virtual</b> keyword while declaring them. Virtual keyword will lead to Late Binding of that method.</p>
+<pre class="cpp">class Base
+{
+ public:
+ <b>virtual</b> void show()
+ {
+  cout &lt;&lt; "Base class";
+ }
+};
+class Derived:public Base
+{
+ public:
+ void show()
+ {
+  cout &lt;&lt; "Derived Class";
+ }
+}
+
+int main()
+{
+ Base* b;       <i>//Base class pointer</i>
+ Derived d;     <i>//Derived class object</i>
+ b = &amp;d;
+ b-&gt;show();     <i>//Late Binding Ocuurs</i>
+}
+</pre>
+<p><code>Output : Derived class</code></p>
+<p>On using Virtual keyword with Base class's function, Late Binding takes place and the derived version of function will be called,
+    because base class pointer pointes to Derived class object.</p>
+<hr>
+<h4>Using Virtual Keyword and Accessing Private Method of Derived class</h4>
+<p>We can call <b>private</b> function of derived class from the base class pointer with the help of virtual keyword.
+    Compiler checks for access specifier only at compile time.
+    So at run time when late binding occurs it does not check whether we are calling the private function or public function.</p>
+<pre class="cpp">#include <iostream>
+using namespace std;
+
+class A
+{
+    public:
+    <b>virtual</b> void show()
+    {
+        cout &lt;&lt; "Base class\n";
+    }
+};
+
+class B: public A
+{
+private:
+    <b>virtual</b> void show()
+    {
+        cout &lt;&lt; "Derived class\n";
+    }
+};
+
+int main()
+{
+    A *a;
+    B b;
+    a = &amp;b;
+    a <b>-&gt;</b> show(); 
+}
+</iostream></pre>
+<code>Output : Derived class</code>
+<hr>
+<h4>Important Points to Remember</h4>
+<ol class="content">
+<li>Only the Base class Method's declaration needs the <b>Virtual</b> Keyword, not the definition.</li>
+<li>If a function is declared as <b>virtual</b> in the base class, it will be virtual in all its derived classes.</li>
+<li>The address of the virtual Function is placed in the <b>VTABLE</b> and the copiler uses <b>VPTR</b>(vpointer) to point to the Virtual Function.</li>
+</ol>
+<hr>
+</p></div>
+</div>

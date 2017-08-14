@@ -1,0 +1,46 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:textSize="40dp"
+        android:text="LoginPage"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:ems="10"
+        android:fontFamily="cursive"
+        android:textColor="#299ca1"
+        android:textSize="30dp"
+        android:hint="UserName"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pass"
+        android:textSize="30dp"
+        android:ems="10" android:fontFamily="cursive"
+        android:textColor="#299ca1"
+        android:hint="Password"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Validate_User"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"/>
+</LinearLayout>

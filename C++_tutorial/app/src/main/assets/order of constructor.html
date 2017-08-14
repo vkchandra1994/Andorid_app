@@ -1,0 +1,76 @@
+<div id="body-content">
+
+<h3>Order of Constructor Call</h3>
+<p>Base class constructors are always called in the derived class constructors. Whenever you create derived class object, first the base class default constructor is executed and then the derived class's constructor finishes execution.</p><hr>
+
+<h4>Points to Remember</h4>
+<ol class="content">
+<li>Whether derived class's default constructor is called or parameterised is called, base class's default constructor is always called inside them.</li><br>
+<li>To call base class's parameterised constructor inside derived class's parameterised constructo, we must mention it explicitly while declaring derived class's parameterized constructor.</li>
+</ol>
+<hr>
+
+<h4>Base class Default Constructor in Derived class Constructors</h4>
+<br><pre class="cpp">class Base
+{ int x;
+  public:
+  Base() { cout &lt;&lt; "Base default constructor"; }
+};
+
+class Derived : public Base
+{ int y;
+  public:
+  Derived() { cout &lt;&lt; "Derived default constructor"; }
+  Derived(int i) { cout &lt;&lt; "Derived parameterized constructor"; }
+};
+
+int main()
+{
+ Base b;        
+ Derived d1;    
+ Derived d2(10);
+}
+</pre>
+<p>You will see in the above example that with both the object creation of the Derived class, Base class's default constructor is called.</p><hr>
+
+<h4>Base class Parameterized Constructor in Derived class Constructor</h4>
+<p>We can explicitly mention to call the Base class's parameterized constructor when Derived class's parameterized constructor is called.</p>
+<pre class="cpp">class Base
+{ int x;
+  public:
+  Base(int i)
+  { x = i;
+    cout &lt;&lt; "Base Parameterized Constructor";
+  }
+};
+
+class Derived : public Base
+{ int y;
+  public:
+  <b>Derived(int j) : Base(j)</b>
+  { y = j;
+    cout &lt;&lt; "Derived Parameterized Constructor";
+  }
+};
+
+int main()
+{
+ Derived d(10) ;
+ cout &lt;&lt; d.x ;    // Output will be 10
+ cout &lt;&lt; d.y ;    // Output will be 10
+}
+</pre>
+<hr>
+
+<h4>Why is Base class Constructor called inside Derived class ?</h4>
+<p>Constructors have a special job of initializing the object properly. A Derived class constructor has access only to its own class members, but a Derived class object also have inherited property of Base class, and only base class constructor can properly initialize base class members. Hence all the constructors are called, else object wouldn't be constructed properly.</p>
+<hr>
+
+<h4>Constructor call in Multiple Inheritance</h4>
+<p>Its almost the same, all the Base class's constructors are called inside derived class's constructor, in the same order in which they are inherited.</p>
+<pre class="cpp">class A : public B, public C ;
+</pre>
+<p>In this case, first class B constructor will be executed, then class C constructor and then class A constructor.</p>
+<hr>
+</li>
+</ul></div>

@@ -1,0 +1,191 @@
+<h1>Types of User-defined Functions in C++</h1>
+<div class="page-short-description">
+In this topic, you will learn about different approaches you can take to solve a single problem using functions.
+</div>
+<p>For better understanding of arguments and return in functions, user-defined functions can be categorised as:</p>
+<ul>
+	<li><a>Function with no argument&nbsp;and no return value</a></li>
+	<li><a>Function with no argument but return value</a></li>
+	<li><a>Function with argument but no return value</a></li>
+	<li><a>Function with argument and return value</a></li>
+</ul>
+<p>Consider a situation in which you have to check prime number. This problem is solved below by making user-defined function in 4 different ways as mentioned above.</p>
+<hr>
+<h2><a name="no_argument_no_return"></a>Example 1: No arguments passed and no return value</h2>
+<pre class="prettyprint prettyprinted"><code><span class="com"># include &lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> prime</span><span class="pun">();</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// No argument is passed to prime()</span><span class="pln">
+    prime</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+
+</span><span class="com">// Return type of function is void because value is not returned.</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> prime</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+
+    </span><span class="kwd">int</span><span class="pln"> num</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+
+    cout<<</span><span class="pun">(</span><span class="str">"Enter a positive integer enter to check: "</span><span class="pun">);</span><span class="pln">
+    cin </span><span class="pun">&gt;&gt;</span><span class="pln"> num</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;=</span><span class="pln"> num</span><span class="pun">/</span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">num </span><span class="pun">%</span><span class="pln"> i </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln"> 
+            </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">flag </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> num </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" is not a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> num </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" is a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p></p><div id="adhuro-block-inject-1" class="adhuro-block-inject adhuro-block-inject-1"></div><p>In the above program, <code>prime()</code> is called from the main() with no arguments.</p>
+<p><code>prime()</code> takes the positive number from the user and checks whether the number is a prime number or not.</p>
+<p>Since, return type of <code>prime()</code> is <code>void</code>, no value is returned from the function.</p>
+<hr>
+<h2><a name="no_argument_yes_return"></a>Example 2: No arguments passed but a return value</h2>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> prime</span><span class="pun">();</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> num</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// No argument is passed to prime()</span><span class="pln">
+    num </span><span class="pun">=</span><span class="pln"> prime</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;=</span><span class="pln"> num</span><span class="pun">/</span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">num</span><span class="pun">%</span><span class="pln">i </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+            </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">flag </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout</span><span class="pun">&lt;&lt;</span><span class="pln">num</span><span class="pun">&lt;&lt;</span><span class="str">" is not a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout</span><span class="pun">&lt;&lt;</span><span class="pln">num</span><span class="pun">&lt;&lt;</span><span class="str">" is a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Return type of function is int</span><span class="pln">
+</span><span class="kwd">int</span><span class="pln"> prime</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">;</span><span class="pln">
+
+    cout<<</span><span class="pun">(</span><span class="str">"Enter a positive integer to check: "</span><span class="pun">);</span><span class="pln">
+    cin </span><span class="pun">&gt;&gt;</span><span class="pln"> n</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> n</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>In the above program, <code>prime()</code> function is called from the <code>main()</code> with no arguments.</p>
+<p><code>prime()</code> takes a positive integer from the user. Since, return type of the function is an <code>int</code>, it returns the inputted number from the user back to the calling <code>main()</code> function.</p>
+<p>Then, whether the number is prime or not is checked in the main() itself and printed onto the screen.</p>
+<hr>
+<h2><a name="yes_argument_no_return"></a>Example 3: Arguments passed but no return value</h2>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> prime</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> num</span><span class="pun">;</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter a positive integer to check: "</span><span class="pun">;</span><span class="pln">
+    cin </span><span class="pun">&gt;&gt;</span><span class="pln"> num</span><span class="pun">;</span><span class="pln">
+    
+    </span><span class="com">// Argument num is passed to the function prime()</span><span class="pln">
+    prime</span><span class="pun">(</span><span class="pln">num</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// There is no return value to calling function. Hence, return type of function is void. */</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> prime</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;=</span><span class="pln"> n</span><span class="pun">/</span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">n</span><span class="pun">%</span><span class="pln">i </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+            </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">flag </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> n </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" is not a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> n </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" is a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+</div><div class="clearfix"></div><p>In the above program, positive number is first asked from the user which is stored in the variable <var>num</var>.</p>
+<p>Then, <var>num</var> is passed to the <code>prime()</code> function where, whether the number is prime or not is checked and printed.</p>
+<p>Since, the return type of <code>prime()</code> is a <code>void</code>, no value is returned from the function.</p>
+<hr>
+<h2><a name="yes_argument_yes_return"></a>Example 4: Arguments passed and a return value.</h2>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> prime</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> num</span><span class="pun">,</span><span class="pln"> flag </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter positive integer to check: "</span><span class="pun">;</span><span class="pln">
+    cin </span><span class="pun">&gt;&gt;</span><span class="pln"> num</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Argument num is passed to check() function</span><span class="pln">
+    flag </span><span class="pun">=</span><span class="pln"> prime</span><span class="pun">(</span><span class="pln">num</span><span class="pun">);</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">flag </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+        cout </span><span class="pun">&lt;&lt;</span><span class="pln"> num </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" is not a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">else</span><span class="pln">
+        cout</span><span class="pun">&lt;&lt;</span><span class="pln"> num </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" is a prime number."</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* This function returns integer value.  */</span><span class="pln">
+</span><span class="kwd">int</span><span class="pln"> prime</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> n</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> i</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;=</span><span class="pln"> n</span><span class="pun">/</span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">n </span><span class="pun">%</span><span class="pln"> i </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>In the above program, a positive integer is asked from the user and stored in the variable <code>num</code>.</p>
+<p>Then, <code>num</code> is passed to the function <code>prime()</code> where, whether the number is prime or not is checked.</p>
+<p>Since, the return type of <code>prime()</code> is an <code>int</code>, 1 or 0 is returned to the <code>main()</code> calling function. If the number is a prime number, 1 is returned. If not, 0 is returned.</p>
+<p>Back in the <code>main()</code> function, the returned 1 or 0 is stored in the variable <var>flag</var>, and the corresponding text is printed onto the screen.</p>
+<hr>
+<h2>Which method is better?</h2>
+<p>All four programs above gives the same output and all are technically correct program.</p>
+<p>There is no hard and fast rule on which method should be chosen.</p>
+<p>The particular method is chosen depending upon the situation and how you want to solve a problem.</p>
+

@@ -1,0 +1,233 @@
+<div class="main-content">
+<h1>C++ Multidimensional Arrays</h1>
+ 
+<div class="page-short-description">
+In this topic, you'll learn about multi-dimensional arrays in C++. More specifically, how to declare them, access them and use them efficiently in your program.</div>
+<img src="file:///android_asset/array_2d.jpg" alt="Working with C++ multidimensional arrays" title="C++ multidimensional arrays">
+<div class="clearfix">
+
+
+  <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="node-246" class="node node-cpp-tutorial clearfix" about="/cpp-programming/multidimensional-arrays" typeof="sioc:Item foaf:Document">
+<span property="dc:title" content="C++ Multidimensional Arrays" class="rdf-meta element-hidden"></span><div class="content clearfix">
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>In C++, you can create an array of an array known as multi-dimensional array. For example:</p>
+<pre>int x[3][4];</pre>
+<p></p><div id="adhuro-block-inject-1" class="adhuro-block-inject adhuro-block-inject-1"></div><p>Here, <var>x</var> is a two dimensional array. It can hold a maximum of 12 elements.</p>
+<p>You can think this array as table with 3 rows and each row has 4 columns as shown below.</p>
+<p><img alt="Elements in two dimensional array in C++ Programming" src="file:///android_asset/array2d.jpg" title="C++ two dimensional array"></p>
+<p>Three dimensional array also works in a similar way. For example:</p>
+<pre>float x[2][4][3];</pre>
+<p>This array <var>x</var> can hold a maximum of 24 elements. You can think this example as: Each of the 2 elements can hold 4 elements, which makes 8 elements and each of those 8 elements can hold 3 elements. Hence, total number of elements this array can hold is 24.</p>
+<hr>
+<h2>Multidimensional Array Initialisation</h2>
+<p>You can initialise a multidimensional array in more than one way.</p>
+<h3>Initialisation of two dimensional array</h3>
+<pre>int test[2][3] = {2, 4, -5, 9, 0, 9};</pre>
+<p>Better way to initialise this array with same array elements as above.</p>
+<pre>int  test[2][3] = { {2, 4, 5}, {9, 0 0}};</pre>
+<hr>
+<h3>Initialisation of three dimensional array</h3>
+<pre>int test[2][3][4] = {3, 4, 2, 3, 0, -3, 9, 11, 23, 12, 23, 
+                 2, 13, 4, 56, 3, 5, 9, 3, 5, 5, 1, 4, 9};
+</pre>
+<p>Better way to initialise this array with same elements as above.</p>
+<pre>int test[2][3][4] = { 
+                     { {3, 4, 2, 3}, {0, -3, 9, 11}, {23, 12, 23, 2} },
+                     { {13, 4, 56, 3}, {5, 9, 3, 5}, {3, 1, 4, 9} }
+                 };
+</pre>
+<hr>
+<h2>Example 1: Two Dimensional Array</h2>
+<p><strong>C++ Program to display all elements of an initialised two dimensional array.</strong></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> test</span><span class="pun">[</span><span class="lit">3</span><span class="pun">][</span><span class="lit">2</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="pun">{</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="lit">5</span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="lit">9</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">};</span><span class="pln">
+
+    </span><span class="com">// Accessing two dimensional array using</span><span class="pln">
+    </span><span class="com">// nested for loops</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">j</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            cou t</span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"test["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"]["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> j </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"] = "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> test</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p></p><div id="block-inject-1" class="block-inject block-inject-1"><div id="block-block-123" class="block block-block">
+</div><div class="clearfix"></div><p><strong>Output</strong></p>
+<pre><samp>test[0][0] = 2
+test[0][1] = -5
+test[1][0] = 4
+test[1][1] = 0
+test[2][0] = 9
+test[2][1] = 1
+</samp></pre>
+<hr>
+<h2>Example 2: Two Dimensional Array</h2>
+<p><strong>C++ Program to store temperature of two different cities for a week and display it.</strong></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> CITY </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> WEEK </span><span class="pun">=</span><span class="pln"> </span><span class="lit">7</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> temperature</span><span class="pun">[</span><span class="pln">CITY</span><span class="pun">][</span><span class="pln">WEEK</span><span class="pun">];</span><span class="pln">
+
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter all temperature for a week of first city and then second city. \n"</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Inserting the values into the temperature array</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> CITY</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> WEEK</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">j</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"City "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">", Day "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> j </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" : "</span><span class="pun">;</span><span class="pln">
+            cin </span><span class="pun">&gt;&gt;</span><span class="pln"> temperature</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">];</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"\n\nDisplaying Values:\n"</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Accessing the values from the temperature array</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> CITY</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> WEEK</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">j</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"City "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">", Day "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> j </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">" = "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> temperature</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><strong>Output</strong></p>
+<pre><samp>Enter all temperature for a week of first city and then second city. 
+City 1, Day 1 : 32
+City 1, Day 2 : 33
+City 1, Day 3 : 32
+City 1, Day 4 : 34
+City 1, Day 5 : 35
+City 1, Day 6 : 36
+City 1, Day 7 : 38
+City 2, Day 1 : 23
+City 2, Day 2 : 24
+City 2, Day 3 : 26
+City 2, Day 4 : 22
+City 2, Day 5 : 29
+City 2, Day 6 : 27
+City 2, Day 7 : 23
+
+
+Displaying Values:
+City 1, Day 1 = 32
+City 1, Day 2 = 33
+City 1, Day 3 = 32
+City 1, Day 4 = 34
+City 1, Day 5 = 35
+City 1, Day 6 = 36
+City 1, Day 7 = 38
+City 2, Day 1 = 23
+City 2, Day 2 = 24
+City 2, Day 3 = 26
+City 2, Day 4 = 22
+City 2, Day 5 = 29
+City 2, Day 6 = 27
+City 2, Day 7 = 23
+</samp></pre>
+<hr>
+<h3>Example 3: Three Dimensional Array</h3>
+<p><strong>C++ Program to Store value entered by user in three dimensional array and display it.</strong></p>
+<pre class="prettyprint prettyprinted"><code><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iostream&gt;</span><span class="pln">
+</span><span class="kwd">using</span><span class="pln"> </span><span class="kwd">namespace</span><span class="pln"> std</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// This array can store upto 12 elements (2x3x2)</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> test</span><span class="pun">[</span><span class="lit">2</span><span class="pun">][</span><span class="lit">3</span><span class="pun">][</span><span class="lit">2</span><span class="pun">];</span><span class="pln">
+
+    cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"Enter 12 values: \n"</span><span class="pun">;</span><span class="pln">
+    
+    </span><span class="com">// Inserting the values into the test array</span><span class="pln">
+    </span><span class="com">// using 3 nested for loops.</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">j</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> k </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> k </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">k </span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln">
+                cin </span><span class="pun">&gt;&gt;</span><span class="pln"> test</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">][</span><span class="pln">k</span><span class="pun">];</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    cout</span><span class="pun">&lt;&lt;</span><span class="str">"\nDisplaying Value stored:"</span><span class="pun">&lt;&lt;</span><span class="pln">endl</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Displaying the values with proper index.</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> j </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">j</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> k </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> k </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">k</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln">
+                cout </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"test["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> i </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"]["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> j </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"]["</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> k </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="str">"] = "</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> test</span><span class="pun">[</span><span class="pln">i</span><span class="pun">][</span><span class="pln">j</span><span class="pun">][</span><span class="pln">k</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> endl</span><span class="pun">;</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><strong>Output</strong></p>
+<pre><samp>Enter 12 values: 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+Displaying Value stored:
+test[0][0][0] = 1
+test[0][0][1] = 2
+test[0][1][0] = 3
+test[0][1][1] = 4
+test[0][2][0] = 5
+test[0][2][1] = 6
+test[1][0][0] = 7
+test[1][0][1] = 8
+test[1][1][0] = 9
+test[1][1][1] = 10
+test[1][2][0] = 11
+test[1][2][1] = 12
+</samp></pre>
+<p>As the number of dimension increases, the complexity also increases tremendously although the concept is quite similar.</p>
+</div>
+    </div>
+    </div>
+    </div>
+        </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    </div>

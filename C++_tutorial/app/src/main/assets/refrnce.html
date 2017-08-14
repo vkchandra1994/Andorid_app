@@ -1,0 +1,117 @@
+<div class="span8">
+<div id="body-content">
+
+<h3>References in C++</h3>
+<p>References are like constant pointers that are automatically dereferenced. It is a new name given to an existing storage. So when you are accessing the reference, you are actually accessing that storage.</p>
+<pre class="cpp">int main()
+{ int y=10;
+  int &amp;r = y;  // r is a reference to int y
+  cout &lt;&lt; r;
+}
+</pre>
+<p>Output : </p>
+<pre class="none">10</pre>
+<p>There is no need to use the <code>*</code> to dereference a reference variable.</p>
+<hr>
+
+<h4>Difference between Reference and Pointer</h4>
+<table class="table table-bordered table-striped">
+<thead><tr><th>References</th><th>Pointers</th></tr></thead>
+<tbody>
+<tr>
+<td>Reference must be initialized when it is created.</td>
+<td>Pointers can be initialized any time.</td>
+</tr>
+
+<tr>
+<td>Once initialized, we cannot reinitialize a reference.</td>
+<td>Pointers can be reinitialized any number of time.</td>
+</tr>
+
+<tr>
+<td>You can never have a NULL reference.</td>
+<td>Pointers  can be NULL.</td>
+</tr>
+
+
+<tr>
+<td>Reference is automatically dereferenced.</td>
+<td><code>*</code> is used to dereference a pointer.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+<h3>References in Funtions</h3>
+<p>References are generally used for function argument lists and function return values, just like pointers.</p>
+<h4>Rules for using Reference in Functions</h4>
+<p>
+</p><ol class="content">
+<li>When we use reference in argument list, we must keep in mind that any change to the reference inside the function will cause change to the original argument outside th function.</li><br>
+<li>When we return a reference from a function, you should see that whatever the reference is connected to shouldn't go out of scope when fnction ends. Either make that <b>global</b> or <b>static</b></li>
+</ol>
+<p></p>
+<hr>
+
+<h4>Example to explain use of References</h4>
+<br><pre class="cpp">int* first (int* x)
+{ (*x++);
+  return x;   // SAFE, x is outside this scope
+}
+
+int&amp; second (int&amp; x)
+{ x++;
+  return x;   // SAFE, x is outside this scope
+}
+
+int&amp; third ()
+{ int q;
+  return q;   // ERROR, scope of q ends here
+}
+
+int&amp; fourth ()
+{ static int x;
+  return x;   // SAFE, x is static, hence lives till the end.
+}
+
+int main()
+{
+ int a=0;
+ first(&amp;a);   // UGLY and explicit
+ second(a);   // CLEAN and hidden
+}
+</pre>
+<p>We have four different functions in the above program. </p>
+<ul class="content">
+<li><b>first()</b> takes a pointer as argument and returns a pointer, it will work fine. The returning pointer points to variable declared outside first(), hence it will be valid even after the first() ends.</li><br>
+<li>Similarly, <b>second()</b> will also work fine. The returning reference is connected to valid storage, that is <code>int a</code> in this case.</li><br>
+
+<li>But in case of <b>third()</b>, we declare a variable <code>q</code> inside the function and try to return a reference connected to it. But as soon as function third() ends, the local variable q is destroyed, hence nothing is returned.</li><br>
+
+<li>To remedify above problem, we make x as <b>static</b> in function <b>fourth()</b>, giving it a lifetime till main() ends, hence now a reference connected to x will be valid when returned.</li>
+</ul>
+<hr>
+<h4>Const Reference</h4>
+<p>Const reference is used in function arguments to prevent the function from changing the argument.</p>
+<pre class="cpp">void g(const int&amp; x)
+{ x++; }   // ERROR
+
+int main()
+{
+ int i=10;
+ g(i);
+}</pre>
+<p>We cannot change the argument in the function because it is passed as const reference.</p>
+<hr>
+
+<h4>Argument Passing Guidelines</h4>
+<p>Usually <b>call by value</b> is used during funtcion call just to save our object or variable from being changed or modified, but whenever we pass an argument by value, its new copy is created. If we pass an object as argument then a copy of that object is created (constructor and destructors called), which affects efficiency.</p>
+<p>Hence, we must use <b>const reference</b> type arguments. When we use, const reference, only an address is passed on stack, which is used inside the function and the function cannot change our argument because it is of const type.</p>
+<p>So using const reference type argument reduces overhead and also saves our argument from being changed.</p>
+<hr>
+    </div>
+    </div>
+<div></div>
+</script>
+</p></div>
+</div>
